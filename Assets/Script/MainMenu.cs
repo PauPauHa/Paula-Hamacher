@@ -10,9 +10,14 @@ public class MainMenu : MonoBehaviour
     {
         SceneManager.LoadScene(1);
     }
-    // Update is called once per frame
-    void Update()
+
+    public void ExitGame()
     {
-        
+     #if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+        #else
+        Application.Quit();
+      #endif
     }
+  
 }
