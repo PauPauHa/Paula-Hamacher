@@ -14,9 +14,9 @@ public class Schaden : MonoBehaviour
         currentHealth = maxHealth;
     }
 
-    public void TakeDamage()
+    public void OnTriggerEnter2D(Collider2D other)
     {
-        if (CompareTag("Enemy"))
+        if (other.CompareTag("Enemy"))
         {
             currentHealth -= hit;
         }
