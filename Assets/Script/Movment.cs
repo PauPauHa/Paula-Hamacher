@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
+
 public class Movment : MonoBehaviour
 
 {
+    [SerializeField] private Animator animator;
     public float moveSpeed = 400;
     public float sprintMultiplier = 1;
     private Vector2 inputValue;
@@ -16,6 +18,9 @@ public class Movment : MonoBehaviour
     {
         playerRb.velocity= inputValue * moveSpeed * sprintMultiplier * Time.deltaTime;
        
+        animator.SetFloat("moveDirectionX",inputValue.x);
+        animator.SetFloat("moveDirectionY",inputValue.y); 
+        animator.SetFloat("moveSpeed",playerRb.velocity.magnitude);
     }
 
     public void Move(InputAction.CallbackContext context)

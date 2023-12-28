@@ -9,25 +9,37 @@ public class Schaden : MonoBehaviour
     public int currentHealth;
     public int maxHealth = 30;
     public int hit = 10;
+    [SerializeField]private  Canvas pause;
+    void Start()
+    {
+        pause.enabled = false;
+    }
     private void Awake()
     {
         currentHealth = maxHealth;
     }
 
-    public void OnTriggerEnter2D(Collider2D other)
+   
+
+    
+
+    private void OnCollisionEnter2D(Collision2D other)
     {
-        if (other.CompareTag("Enemy"))
+        if (other.gameObject.tag == "Enemy")
         {
             currentHealth -= hit;
         }
-       
     }
 
     public void Update()
     {
         if (currentHealth<=0)
         {
-            Object.Destroy(gameObject, 0);
+            Time.timeScale = 0;
+            if (Time.timeScale == 0)
+            {
+                pause.enabled = true;
+            }
         }
     }
 }
