@@ -10,13 +10,13 @@ public class Movment : MonoBehaviour
 {
     [SerializeField] private Animator animator;
     public float moveSpeed = 400;
-    public float sprintMultiplier = 1;
+  
     private Vector2 inputValue;
     public Rigidbody2D playerRb;
 
     public void FixedUpdate()
     {
-        playerRb.velocity= inputValue * moveSpeed * sprintMultiplier * Time.deltaTime;
+        playerRb.velocity= inputValue * moveSpeed* Time.deltaTime;
        
         animator.SetFloat("moveDirectionX",inputValue.x);
         animator.SetFloat("moveDirectionY",inputValue.y); 
