@@ -7,12 +7,13 @@ using UnityEngine.AI;
 public class EnemyMover : MonoBehaviour
 
 {
-    public Transform M_Player;
+    public Transform m_Player;
 
 
     // Update is called once per frame
     void Update()
     {
-        GetComponent<NavMeshAgent>().destination = M_Player.position;
+        // sorgt dafür das der enemy der transfrom componente des spielers folgt 
+        GetComponent<NavMeshAgent>().destination = m_Player.position;
     }
 }
